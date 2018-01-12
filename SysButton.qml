@@ -12,6 +12,7 @@ Image {
     width: 16
     height: 16
     source: image_source_exited
+    anchors.verticalCenter: parent.verticalCenter
     MouseArea {
         anchors.fill: parent
         onEntered: sysbtn.source = image_source_entered
