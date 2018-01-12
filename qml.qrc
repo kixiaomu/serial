@@ -1,0 +1,24 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>qtquickcontrols2.conf</file>
+        <file>FootBar.qml</file>
+        <file>FootButton.qml</file>
+        <file>HeaderBar.qml</file>
+        <file>SysButton.qml</file>
+        <file>Page1.qml</file>
+        <file>Page1Form.ui.qml</file>
+    </qresource>
+    <qresource prefix="/png/sysbtn">
+        <file>sysbtn/close_white.png</file>
+        <file>sysbtn/close_blue.png</file>
+        <file>sysbtn/roomIn_white.png</file>
+        <file>sysbtn/roomIn_gray.png</file>
+        <file>sysbtn/close_gray.png</file>
+        <file>sysbtn/minimizing_gray.png</file>
+        <file>sysbtn/tool_white.png</file>
+        <file>sysbtn/serial_white.png</file>
+        <file>sysbtn/serial_blue.png</file>
+        <file>sysbtn/tool_blue.png</file>
+    </qresource>
+</RCC>
