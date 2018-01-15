@@ -1,5 +1,7 @@
 QT += qml quick
 QT += core
+QT += serialport
+
 CONFIG += c++11
 
 SOURCES += main.cpp \
@@ -31,3 +33,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     applicationdata.h
+
+DISTFILES +=

@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 
     pTimer->setInterval(1000);
     engine.rootContext()->setContextProperty("ptimer", pTimer);
-    engine.rootContext()->setContextProperty("datetime",&appdata);
+    engine.rootContext()->setContextProperty("appdata",&appdata);
 
 
 

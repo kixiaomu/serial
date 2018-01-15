@@ -16,6 +16,7 @@ ApplicationWindow {
             height: 48
             color: "#e6e6e6"
         }
+        //中间内容
         Rectangle{
             id:swipeView_r
             width: 900
@@ -27,12 +28,10 @@ ApplicationWindow {
                 anchors.fill: parent
                 currentIndex: footbar.currentIndex
 
-                Page{
-                    Label{
-                        anchors.centerIn: parent
-                        text:"page.1"
-                    }
+
+                Page1{
                 }
+
                 Page{
                     Label{
                         anchors.centerIn: parent

@@ -44,7 +44,7 @@ Rectangle {
         FootButton{
             index:2
             image_source: "qrc:/png/sysbtn/sysbtn/serial_blue.png"
-            button_name: "位置预留"
+            button_name: "网络调试"
             onClicked: m_footbar.currentIndex=2
 
         }
