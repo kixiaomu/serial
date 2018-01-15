@@ -4,14 +4,21 @@ ApplicationData::ApplicationData()
 {
     qDebug()<<"application is construct";
 
-
+    //connect(m_page1,SIGNAL(scanClicked),this,SLOT(onScanClicked()))
 }
 
-QList<QString> ApplicationData::getAllSerialPortName()
+QStringList ApplicationData::getAllSerialPortName()
 {
+    QStringList serialNameStringList;
     QList<QString> serialPortNameList;
     foreach (QSerialPortInfo serialPortInfo, QSerialPortInfo::availablePorts()) {
-        serialPortNameList.append(serialPortInfo.portName());
+        serialNameStringList.append(serialPortInfo.portName());
     }
-    return serialPortNameList;
+    return serialNameStringList;
 }
+
+void ApplicationData::onScanClicked()
+{
+    qDebug()<<"64546";
+}
+

@@ -18,10 +18,12 @@ public:
     Q_INVOKABLE QDateTime getCurrentDateTime() const {
         return QDateTime::currentDateTime();
     }
-    Q_INVOKABLE QList<QString> getAllSerialPortName();
+    Q_INVOKABLE QStringList getAllSerialPortName();
 private:
     QSerialPort m_serialPort;
     QSerialPortInfo m_serialPortInfo;
+public slots:
+    void onScanClicked();
 
 
 

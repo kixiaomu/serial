@@ -7,7 +7,7 @@ Item {
     id: m_page1
     width: 900
     height: 528
-    signal clicked
+    signal scanClicked
     GroupBox {
         id: groupBox
         x: 38
@@ -52,20 +52,15 @@ Item {
             y: 20
             width: 90
             height: 40
-            model: ListModel {
-                id: serialport_model
-                ListElement { text: "Banana" }
-                ListElement { text: "Apple" }
-                ListElement { text: "Coconut" }
-            }
+            model:comboxModel
         }
 
         Button {
-            id: button
+            id: button_scan
             x: 31
             y: 335
             text: qsTr("开始扫描")
-            onClicked: serialport_model.append({text:"123456"})
+            onClicked: m_page1.scanClicked()
         }
     }
 

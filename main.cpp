@@ -3,6 +3,10 @@
 #include <QQmlContext>
 #include <QDateTime>
 #include "applicationdata.h"
+/*
+QML于C++交互之信号与槽(signal&slot )
+https://www.cnblogs.com/findumars/p/6555687.html
+*/
 
 int main(int argc, char *argv[])
 {
@@ -18,9 +22,17 @@ int main(int argc, char *argv[])
 
 
 
-    engine.load(QUrl(QLatin1String("qrc:/main.qml")));
-
     //connect(pTimer, &QTimer::timeout, this, &ApplicationData::onTimeout);
+
+    engine.rootContext()->setContextProperty("comboxModel",QVariant::fromValue(appdata.getAllSerialPortName()));
+    engine.load(QUrl(QLatin1String("qrc:/main.qml")));
+    QObject* test = engine.findChild<QObject*>("test111");
+    if(test)
+    {
+        qDebug()<<"查找成功";
+    }
+
+
     pTimer->start();
 
 

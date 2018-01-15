@@ -8,6 +8,7 @@ ApplicationWindow {
     height: 640
     flags: Qt.FramelessWindowHint|Qt.Window
     Rectangle{
+        id:test111
         anchors.fill: parent
         radius: 10
         HeaderBar{
