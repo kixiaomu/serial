@@ -3,11 +3,14 @@ import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.3
 
 ApplicationWindow {
+    objectName: "test112"
     visible: true
     width: 900
     height: 640
     flags: Qt.FramelessWindowHint|Qt.Window
-    Rectangle{
+    Rectangle
+    {
+        objectName: "test111"
         id:test111
         anchors.fill: parent
         radius: 10

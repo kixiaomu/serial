@@ -22,6 +22,7 @@ Item {
                 id: textArea
                 anchors.fill: parent
                 text: qsTr("Text Area")
+
             }
         }
     }
@@ -78,7 +79,9 @@ Item {
             x: 86
             y: 16
             anchors.fill: parent
-            text: qsTr("Text Area")
+            text: qsTr("Text Areaxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxqqq")
+            textFormat: Text.RichText
+            wrapMode: Text.WordWrap
         }
     }
 }

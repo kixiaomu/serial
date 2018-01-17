@@ -23,14 +23,40 @@ int main(int argc, char *argv[])
 
 
     //connect(pTimer, &QTimer::timeout, this, &ApplicationData::onTimeout);
+    QStringList combox_list;
+    combox_list<<"COM";
+    engine.rootContext()->setContextProperty("comboxModel",QVariant::fromValue(combox_list));
+    engine.rootContext()->setContextProperty("receiveTextAreaString","123456");
 
-    engine.rootContext()->setContextProperty("comboxModel",QVariant::fromValue(appdata.getAllSerialPortName()));
+
     engine.load(QUrl(QLatin1String("qrc:/main.qml")));
-    QObject* test = engine.findChild<QObject*>("test111");
-    if(test)
+
+
+    appdata.engine=&engine;
+    QObject* button_scan = engine.rootObjects()[0]->findChild<QObject*>("button_scan");
+    if(button_scan)
     {
-        qDebug()<<"查找成功";
+        QObject::connect(button_scan,SIGNAL(clicked()),&appdata,SLOT(onScanClicked()));
+        qDebug()<<"button_scan";
     }
+
+    QObject* button_listen = engine.rootObjects()[0]->findChild<QObject*>("button_listen");
+    if(button_listen)
+    {
+        QObject::connect(button_listen,SIGNAL(clicked()),&appdata,SLOT(onListenClicked()));
+        qDebug()<<"button_listen";
+    }
+
+
+
+
+    QObject* serialport_comboBox = engine.rootObjects()[0]->findChild<QObject*>("serialport_comboBox");
+    if(serialport_comboBox)
+    {
+        QObject::connect(serialport_comboBox,SIGNAL(activated(int)),&appdata,SLOT(onActivated(int)));
+        qDebug()<<"serialport_comboBox";
+    }
+
 
 
     pTimer->start();
