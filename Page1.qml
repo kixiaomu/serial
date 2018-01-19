@@ -62,21 +62,51 @@ Item {
             onCurrentIndexChanged: console.log("当前值:"+currentIndex)
         }
 
+
         Button {
             id: button_scan
             objectName: "button_scan"
-            x: 31
-            y: 240
+            x: 0
+            y: 296
+            width: 69
+            height: 40
             text: qsTr("开始扫描")
         }
         Button {
             id: button_listen
             objectName: "button_listen"
-            x: 31
-            y: 330
+            x: 107
+            y: 296
+            width: 69
+            height: 40
             text: qsTr("开始监听")
 
         }
+
+        Button {
+            id: button_send
+            objectName: "button_send"
+            x: 0
+            y: 361
+            width: 69
+            height: 40
+            text: qsTr("发送")
+
+        }
+
+        Button {
+            id: button_clear
+            objectName: "button_clear"
+            x: 107
+            y: 361
+            width: 69
+            height: 40
+            text: qsTr("清除")
+
+        }
+
+
+
     }
 
     GroupBox {

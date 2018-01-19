@@ -32,7 +32,7 @@ void ApplicationData::onListenClicked()
 {
     qDebug()<<"开始监听,当前值:"<<serial_combox_index;
     m_serialPort.setPort(serialPortInfoList.at(serial_combox_index));
-    m_serialPort.setBaudRate(QSerialPort::Baud115200);
+    m_serialPort.setBaudRate(QSerialPort::Baud57600);
     m_serialPort.setParity(QSerialPort::NoParity);
     m_serialPort.setDataBits(QSerialPort::Data8);
     m_serialPort.setStopBits(QSerialPort::OneStop);
@@ -55,19 +55,59 @@ void ApplicationData::onListenClicked()
     connect(&m_serialPort,QSerialPort::readyRead,this,&onReadyRead);
 }
 
+void ApplicationData::onWifitestClicked()
+{
+    m_serialPort.write(QString("AT+WMODE\r\n").toLatin1());
+}
+
+void ApplicationData::onWifiDebugClicked()
+{
+    m_serialPort.write(QString("+++").toLatin1());
+}
+
+void ApplicationData::onClearClicked()
+{
+    receiveString="";
+    engine->rootContext()->setContextProperty("receiveTextAreaString","");
+}
+
 void ApplicationData::onActivated(int index)
 {
     qDebug()<<"onActivated"<<index;
     serial_combox_index=index;
 }
-QString receiveString;
+
 void ApplicationData::onReadyRead()
 {
 
     QByteArray byteArry=m_serialPort.readAll();
-    receiveString=receiveString+QString(byteArry);
-    qDebug()<<QString(byteArry);
+    QString readString=QString(byteArry);
+    receiveString=receiveString+readString;
+
+    if(receiveString.compare("a")==0)
+    {
+        m_serialPort.write(QString("a").toLatin1());
+        qDebug()<<"成功接收到数据";
+    }
+    qDebug()<<receiveString;
+
     engine->rootContext()->setContextProperty("receiveTextAreaString",receiveString);
 
+    if(receiveString.startsWith("AT+")){
+        qDebug()<<"接收到回复AT指令";
+        if(receiveString.startsWith("AT+WSCAN")){
+            qDebug()<<"AT指令发送成功";
+        }
+    }
+    QRegExp rx("AT");
+    rx.indexIn("AT...AT...AT");
+    qDebug()<<"正则匹配数量:"<<rx.matchedLength();
+
 }
+
+void ApplicationData::onCurrentIndexChanged(int index)
+{
+    qDebug()<<"当前界面"<<index;
+}
+
 

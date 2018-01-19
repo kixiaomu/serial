@@ -57,6 +57,32 @@ int main(int argc, char *argv[])
         qDebug()<<"serialport_comboBox";
     }
 
+    QObject* button_wifi_test = engine.rootObjects()[0]->findChild<QObject*>("button_wifi_test");
+    if(button_wifi_test)
+    {
+        QObject::connect(button_wifi_test,SIGNAL(clicked()),&appdata,SLOT(onWifitestClicked()));
+
+    }
+
+    QObject* button_wifi_debug = engine.rootObjects()[0]->findChild<QObject*>("button_wifi_debug");
+    if(button_wifi_test)
+    {
+        QObject::connect(button_wifi_debug,SIGNAL(clicked()),&appdata,SLOT(onWifiDebugClicked()));
+
+    }
+    QObject* button_clear = engine.rootObjects()[0]->findChild<QObject*>("button_clear");
+    if(button_clear)
+    {
+        QObject::connect(button_clear,SIGNAL(clicked()),&appdata,SLOT(onClearClicked()));
+
+    }
+    QObject* swipeView_r = engine.rootObjects()[0]->findChild<QObject*>("swipeView_r");
+    if(swipeView_r)
+    {
+        QObject::connect(swipeView_r,SIGNAL(onCurrentIndexChanged(int)),&appdata,SLOT(onCurrentIndexChanged(int)));
+
+    }
+
 
 
     pTimer->start();

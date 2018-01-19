@@ -10,7 +10,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QList>
-
+#include <QRegExp>
 
 class ApplicationData : public QObject
 {
@@ -26,6 +26,8 @@ public:
     QObject *receiveTextArea;
 
 private:
+    QString receiveString;
+
     QSerialPort m_serialPort;
     QSerialPortInfo m_serialPortInfo;
     int serial_combox_index=0;
@@ -35,8 +37,13 @@ private:
 public slots:
     void onScanClicked();
     void onListenClicked();
+    void onWifitestClicked();
+    void onWifiDebugClicked();
+    void onClearClicked();
     void onActivated(int index);
     void onReadyRead();
+    void onCurrentIndexChanged(int index);
+
 
 
 };

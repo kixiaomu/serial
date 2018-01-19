@@ -7,7 +7,7 @@ Item {
     id: m_page1
     width: 900
     height: 528
-    signal clicked
+    signal scanClicked
     GroupBox {
         id: groupBox
         x: 38
@@ -15,14 +15,18 @@ Item {
         width: 584
         height: 226
         title: qsTr("接收")
+
         ScrollView {
             anchors.fill: parent
 
             TextArea {
-                id: textArea
-                anchors.fill: parent
-                text: qsTr("Text Area")
+                objectName: "receiveTextArea"
+                id: receiveTextArea
+                //width: parent.width
+                text: receiveTextAreaString
+                wrapMode: Text.WrapAnywhere
 
+                cursorPosition: text.length
             }
         }
     }
@@ -49,21 +53,58 @@ Item {
 
         ComboBox {
             id: serialport_comboBox
+            objectName: "serialport_comboBox"
             x: 75
             y: 20
             width: 90
             height: 40
-            model: ListModel {
-                id: serialport_model
-            }
+            model:comboxModel
+
         }
 
         Button {
-            id: button
-            x: 31
-            y: 335
+            id: button_scan
+            objectName: "button_scan"
+            x: 0
+            y: 296
+            width: 69
+            height: 40
             text: qsTr("开始扫描")
         }
+        Button {
+            id: button_listen
+            objectName: "button_listen"
+            x: 107
+            y: 296
+            width: 69
+            height: 40
+            text: qsTr("开始监听")
+
+        }
+
+        Button {
+            id: button_scan1
+            x: 0
+            y: 361
+            width: 69
+            height: 40
+            text: qsTr("发送")
+
+        }
+
+
+
+        Button {
+            id: button_scan2
+            x: 107
+            y: 361
+            width: 69
+            height: 40
+            text: qsTr("清除")
+
+        }
+
+
     }
 
     GroupBox {
@@ -73,15 +114,14 @@ Item {
         width: 584
         height: 139
         title: qsTr("发送")
-
-        TextArea {
-            id: textArea1
-            x: 86
-            y: 16
+        ScrollView {
             anchors.fill: parent
-            text: qsTr("Text Areaxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxqqq")
-            textFormat: Text.RichText
-            wrapMode: Text.WordWrap
+            TextArea {
+                id: textArea1
+                //anchors.fill: parent
+                text: qsTr("Text Area")
+            }
         }
     }
+
 }

@@ -22,7 +22,9 @@ ApplicationWindow {
         }
         //中间内容
         Rectangle{
+            signal onCurrentIndexChanged(int index)
             id:swipeView_r
+            objectName: "swipeView_r"
             width: 900
             height: 528
             anchors.top:headerbar.bottom
@@ -36,11 +38,7 @@ ApplicationWindow {
                 Page1{
                 }
 
-                Page{
-                    Label{
-                        anchors.centerIn: parent
-                        text:"page.2"
-                    }
+                Page2{
                 }
                 Page{
                     Label{
@@ -54,8 +52,10 @@ ApplicationWindow {
                         text:"page.4"
                     }
                 }
-                onCurrentIndexChanged: footbar.currentIndex=currentIndex
-
+                onCurrentIndexChanged: {
+                    swipeView_r.onCurrentIndexChanged(currentIndex)
+                    footbar.currentIndex=currentIndex
+                }
 
             }
 
@@ -65,6 +65,7 @@ ApplicationWindow {
 
         FootBar{
             id:footbar
+
             currentIndex: swipeView.currentIndex
             color: "#e6e6e6"
             anchors.top:swipeView_r.bottom
