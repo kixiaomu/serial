@@ -45,5 +45,43 @@ Item {
              cursorPosition: text.length
          }
      }
+     Rectangle {
+         id: rectangle
+         x: 720
+         y: 81
+         width: 151
+         height: 227
+         border.width: 1
+         border.color: "#58bace"
+
+         ListView {
+             id: listView
+             anchors.fill: parent
+             anchors.margins: 10
+             spacing: 4
+             model: mymodel
+             delegate: wifiListViewDelegate
+         }
+         Component {
+             id: wifiListViewDelegate
+
+             Rectangle {
+                 anchors.left: parent.left
+                 anchors.right: parent.right
+                 border.width: 1
+                 border.color: "lightsteelblue"
+                 height: 20
+
+                 Text {
+                     anchors.verticalCenter:parent.verticalCenter
+                     id: wifiSSIDText
+                     text:wifiSSID
+                 }
+             }
+         }
+
+
+
+     }
 
 }

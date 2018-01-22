@@ -5,7 +5,8 @@ QT += serialport
 CONFIG += c++11
 
 SOURCES += main.cpp \
-    applicationdata.cpp
+    applicationdata.cpp \
+    wifidata.cpp
 
 RESOURCES += qml.qrc
 
@@ -32,6 +33,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    applicationdata.h
+    applicationdata.h \
+    wifidata.h
 
 DISTFILES +=

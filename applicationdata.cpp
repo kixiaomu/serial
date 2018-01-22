@@ -57,12 +57,13 @@ void ApplicationData::onListenClicked()
 
 void ApplicationData::onWifitestClicked()
 {
-    m_serialPort.write(QString("AT+WMODE\r\n").toLatin1());
+    m_serialPort.write(QString("AT+WSCAN\r\n").toLatin1());
 }
 
 void ApplicationData::onWifiDebugClicked()
 {
     m_serialPort.write(QString("+++").toLatin1());
+
 }
 
 void ApplicationData::onClearClicked()
@@ -99,9 +100,37 @@ void ApplicationData::onReadyRead()
             qDebug()<<"AT指令发送成功";
         }
     }
-    QRegExp rx("AT");
-    rx.indexIn("AT...AT...AT");
-    qDebug()<<"正则匹配数量:"<<rx.matchedLength();
+    QRegExp atRegExp("AT+WSCAN");
+    if(1){
+
+        QRegExp mRegExp("(\\d+)%,([^,]*),(([0-9a-fA-F][0-9a-fA-F]:){5}[^,]*),(\\d+),");
+
+        int regIndex=0;
+        QStringList wifiSSIDList;
+        //创建一个wifi合集
+
+        QString wifiRSSI,wifiSSID,wifiEncryption;
+        while ((regIndex = mRegExp.indexIn(receiveString, regIndex)) != -1) {
+            regIndex += mRegExp.matchedLength();
+            wifiRSSI=mRegExp.cap(1);
+            qDebug()<<"信号强度:"<<wifiRSSI;
+            wifiSSID=mRegExp.cap(2);
+            qDebug()<<"WIFI名称:"<<wifiSSID;
+            if(wifiSSID.startsWith("0x")) continue;
+            wifiList.append(new wifiData(wifiSSID+"---"+wifiRSSI,wifiRSSI.toInt()));
+            wifiSSIDList.append(wifiSSID);
+            qDebug()<<"MAC地址:"<<mRegExp.cap(3);
+            qDebug()<<"加密方式:"<<mRegExp.cap(6);
+
+        }
+
+
+
+        engine->rootContext()->setContextProperty("mymodel",QVariant::fromValue(wifiList));
+    }
+
+
+
 
 }
 

@@ -3,6 +3,7 @@
 #include <QQmlContext>
 #include <QDateTime>
 #include "applicationdata.h"
+#include "wifidata.h"
 /*
 QML于C++交互之信号与槽(signal&slot )
 https://www.cnblogs.com/findumars/p/6555687.html
@@ -26,6 +27,15 @@ int main(int argc, char *argv[])
     QStringList combox_list;
     combox_list<<"COM";
     engine.rootContext()->setContextProperty("comboxModel",QVariant::fromValue(combox_list));
+
+    QList<QObject *> wifiList;
+    wifiList.append(new wifiData("ycf01",11));
+    wifiList.append(new wifiData("ycf02",22));
+    wifiList.append(new wifiData("ycf03",33));
+
+    engine.rootContext()->setContextProperty("mymodel",QVariant::fromValue(wifiList));
+
+
     engine.rootContext()->setContextProperty("receiveTextAreaString","123456");
 
 

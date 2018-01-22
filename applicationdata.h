@@ -11,16 +11,23 @@
 #include <QQmlContext>
 #include <QList>
 #include <QRegExp>
+#include <wifidata.h>
 
 class ApplicationData : public QObject
 {
     Q_OBJECT
+
 public:
     ApplicationData();
     Q_INVOKABLE QDateTime getCurrentDateTime() const {
         return QDateTime::currentDateTime();
     }
     Q_INVOKABLE QStringList getAllSerialPortName();
+
+
+
+
+
 
     QQmlApplicationEngine* engine;
     QObject *receiveTextArea;
@@ -32,6 +39,8 @@ private:
     QSerialPortInfo m_serialPortInfo;
     int serial_combox_index=0;
     QList<QSerialPortInfo> serialPortInfoList;
+
+    QList<QObject *> wifiList;
 
 
 public slots:
