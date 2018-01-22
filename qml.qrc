@@ -10,8 +10,6 @@
         <file>Page1Form.ui.qml</file>
         <file>Page2.qml</file>
         <file>Page2Form.ui.qml</file>
-        <file>HeaderBartest.qml</file>
-        <file>HeaderBartestForm.ui.qml</file>
     </qresource>
     <qresource prefix="/png/sysbtn">
         <file>sysbtn/close_white.png</file>
