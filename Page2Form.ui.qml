@@ -3,95 +3,41 @@ import QtQuick.Controls 2.2
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Layouts 1.3
 
-Item {
-    width: 900
-    height: 528
+
+Rectangle{
+     height: 60
+     width: 151
+    Image {
+        anchors.left: parent.left
+        id: wifi_image
+        source: "qrc:/png/sysbtn/sysbtn/wifi_blue.png"
+        width: 16
+        height: 16
+        anchors.verticalCenter: parent.verticalCenter
+    }
+    Text {
+        anchors.right: parent.right
+
+        anchors.verticalCenter:parent.verticalCenter
+        id: wifiSSIDText
+        text:wifiSSID
+        font.bold: true
+        color: "#515151"
+        width: 100
+    }
 
     Button {
         id: button
-        x: 720
-        y: 321
-        width: 151
-        height: 47
-        text: qsTr("连接并进入调试")
-    }
+        anchors{
+            right: parent.right
+            bottom: parent.bottom
 
-    Button {
-        id: button1
-        x: 720
-        y: 388
-        width: 151
-        height: 40
-        text: qsTr("测试")
-    }
-
-    TextArea {
-        id: textArea
-        x: 70
-        y: 73
-        width: 609
-        height: 355
-        text: qsTr("Text Area")
-        wrapMode: Text.WrapAnywhere
-        background: Rectangle {
-            border.width: 1
-            border.color: "#58bace"
-            anchors.fill: parent
         }
+        width: 50
+        height: 16
+        text: qsTr("连接")
     }
 
-    Rectangle {
-        id: rectangle
-        x: 720
-        y: 81
-        width: 151
-        height: 227
-        color: "#ffffff"
 
-        ListView {
-            id: listView
-            anchors.fill: parent
-            model: ListModel {
-                ListElement {
-                    name: "Grey"
-                    colorCode: "grey"
-                }
-
-                ListElement {
-                    name: "Red"
-                    colorCode: "red"
-                }
-
-                ListElement {
-                    name: "Blue"
-                    colorCode: "blue"
-                }
-
-                ListElement {
-                    name: "Green"
-                    colorCode: "green"
-                }
-            }
-            delegate: Item {
-                x: 5
-                width: 80
-                height: 40
-                Row {
-                    id: row1
-                    Rectangle {
-                        width: 40
-                        height: 40
-                        color: colorCode
-                    }
-
-                    Text {
-                        text: name
-                        font.bold: true
-                        anchors.verticalCenter: parent.verticalCenter
-                    }
-                    spacing: 10
-                }
-            }
-        }
-    }
 }
+

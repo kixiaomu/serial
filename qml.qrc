@@ -24,5 +24,6 @@
         <file>sysbtn/serial_white.png</file>
         <file>sysbtn/serial_blue.png</file>
         <file>sysbtn/tool_blue.png</file>
+        <file>sysbtn/wifi_blue.png</file>
     </qresource>
 </RCC>

@@ -121,7 +121,7 @@ void ApplicationData::onReadyRead()
             wifiSSID=mRegExp.cap(2);
             qDebug()<<"WIFI名称:"<<wifiSSID;
             if(wifiSSID.startsWith("0x")) continue;
-            wifiList.append(new wifiData(wifiSSID+"---"+wifiRSSI,wifiRSSI.toInt()));
+            wifiList.append(new wifiData(wifiSSID,wifiRSSI.toInt()));
             wifiSSIDList.append(wifiSSID);
             qDebug()<<"MAC地址:"<<mRegExp.cap(3);
             qDebug()<<"加密方式:"<<mRegExp.cap(6);
