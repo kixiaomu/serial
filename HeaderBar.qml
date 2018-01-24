@@ -6,20 +6,6 @@ import QtQuick.Layouts 1.3
 Rectangle{
     width: 900
     height: 48
-    Text {
-        id: headerText
-        height: parent.height
-        color: "#58bace"
-        anchors{
-            verticalCenter: parent.verticalCenter
-            left: parent.left
-        }
-        text: qsTr("YCF电子组上位机V1.0")
-        font.bold: true
-        font.pointSize: 16
-        verticalAlignment: Text.AlignVCenter
-
-    }
 
         SysButton{
             id:close
